@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+lsd_control=~/.lsd-control
+if [[ -f "${lsd_control}" ]]; then
+    source "${lsd_control}"
+else
+    touch ${lsd_control}
+    echo -ne "lsd=true" > ${lsd_control}
+fi
+
+
+if [[ -z ${lsd} ]]; then
+    exit 1
+fi
+
+case ${lsd} in
+    true) alias ls='lsd';;
+    false) unalias ls;;
+    *) :;;
+esac

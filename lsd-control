@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+
+# Usage
+# _usage <exit code>
+_usage() {
+    echo "usage ${0} <true or false>"
+    echo
+    echo "Set the default behavior when the ls command is executed."
+    echo
+    echo "If true is passed, the ls alias will be set to lsd."
+    echo "If false is passed, no ls alias will be set."
+
+    exit "${1}"
+}
+
+
+if [[ ! ${#} = 1 ]]; then
+    _usage 1
+fi
+
+
+case ${1} in
+    true) lsd=true ;;
+    false) lsd=false ;;
+    *) _usage 1 ;;
+esac
+
+
+echo -ne "lsd=${lsd}" > ~/.lsd-control
