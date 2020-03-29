@@ -2,7 +2,7 @@ lsd-control
 ===========
 
 lsd-control <true/false>
-ksd-aliasの動作を設定します。設定は~/.lsd-controlに保存されます。
+lsd-aliasの動作を設定します。設定は~/.lsd-controlに保存されます。
 
 
 lsd-alias
