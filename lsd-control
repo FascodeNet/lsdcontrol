@@ -19,12 +19,17 @@ if [[ ! ${#} = 1 ]]; then
     _usage 1
 fi
 
+set +e
+unalias ls > /dev/null 2>&1
 
 case ${1} in
-    true) lsd=true; alias ls='lsd' ;;
-    false) lsd=false; alias ls='ls' ;;
+    true) lsd=true;;
+    false) lsd=false;;
     *) _usage 1 ;;
 esac
 
 
 echo -ne "lsd=${lsd}" > ~/.lsd-control
+
+echo "lsdは${lsd}に設定されました。"
+echo "lsd-aliasを再読込するか、シェルを再起動して下さい。"

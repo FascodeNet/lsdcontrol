@@ -6,15 +6,21 @@ if [[ -f "${lsd_control}" ]]; then
 else
     touch ${lsd_control}
     echo -ne "lsd=true" > ${lsd_control}
+    lsd=true
 fi
 
 
-if [[ -z ${lsd} ]]; then
-    exit 1
+if [[ ${TERM} = "linux" ]]; then
+    exit 0
 fi
+
+
+set +e
+unalias ls > /dev/null 2>&1
+
 
 case ${lsd} in
     true) alias ls='lsd';;
-    false) unalias ls;;
+    false) alias ls='ls';;
     *) :;;
 esac
