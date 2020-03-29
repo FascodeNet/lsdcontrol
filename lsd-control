@@ -22,7 +22,7 @@ fi
 
 case ${1} in
     true) lsd=true; alias ls='lsd' ;;
-    false) lsd=false; unalias ls ;;
+    false) lsd=false; alias ls='ls' ;;
     *) _usage 1 ;;
 esac
 
