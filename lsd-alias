@@ -10,17 +10,14 @@ else
 fi
 
 
-if [[ ${TERM} = "linux" ]]; then
-    exit 0
+if [[ ! ${TERM} = "linux" ]]; then
+    set +e
+    unalias ls > /dev/null 2>&1
+
+
+    case ${lsd} in
+        true) alias ls='lsd';;
+        false) alias ls='ls';;
+        *) :;;
+    esac
 fi
-
-
-set +e
-unalias ls > /dev/null 2>&1
-
-
-case ${lsd} in
-    true) alias ls='lsd';;
-    false) alias ls='ls';;
-    *) :;;
-esac
